@@ -5,6 +5,10 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 import android.util.Log;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.SSLContext;
 
 /**
  * Created by Nikolay Demyankov on 03.06.16.
@@ -32,9 +36,16 @@ public class URLConnectionHelper {
         if (connectionURL == null) {
             throw new IOException("Invalid url format: " + url);
         }
-        
-        final URLConnection urlConnection = connectionURL.openConnection();
-        Log.d("Printing UrlConnection = + urlConnection");
+        //Custom Code added to support kitkat https calls
+        SSLContext sslcontext = SSLContext.getInstance("TLSv1");
+        sslcontext.init(null, null, null);
+        SSLSocketFactory NoSSLv3Factory = new NoSSLv3SocketFactory(sslcontext.getSocketFactory());
+        HttpsURLConnection.setDefaultSSLSocketFactory(NoSSLv3Factory);
+        //l_connection = (HttpsURLConnection) l_url.openConnection();
+        //l_connection.connect();
+        //final URLConnection urlConnection = connectionURL.openConnection();
+        final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
+        Log.d("Printing UrlConnection =" + urlConnection);
         urlConnection.setConnectTimeout(CONNECTION_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
 
