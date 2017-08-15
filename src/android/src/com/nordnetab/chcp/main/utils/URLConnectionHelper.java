@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
+import android.util.Log;
 
 /**
  * Created by Nikolay Demyankov on 03.06.16.
@@ -31,8 +32,9 @@ public class URLConnectionHelper {
         if (connectionURL == null) {
             throw new IOException("Invalid url format: " + url);
         }
-
+        
         final URLConnection urlConnection = connectionURL.openConnection();
+        Log.d("Printing UrlConnection = + urlConnection");
         urlConnection.setConnectTimeout(CONNECTION_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
 
