@@ -5,6 +5,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 import android.util.Log;
+import com.nordnetab.chcp.main.utils.NoSSLv3SocketFactory;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
@@ -45,7 +46,7 @@ public class URLConnectionHelper {
         //l_connection.connect();
         //final URLConnection urlConnection = connectionURL.openConnection();
         final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
-        Log.d("Printing UrlConnection =" + urlConnection);
+        Log.d("Printing UrlConnection =" , urlConnection.toString());
         urlConnection.setConnectTimeout(CONNECTION_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
 
