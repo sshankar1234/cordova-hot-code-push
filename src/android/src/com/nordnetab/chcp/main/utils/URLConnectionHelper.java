@@ -39,12 +39,12 @@ public class URLConnectionHelper {
         //Custom Code added to support kitkat https calls
         SSLContext sslcontext = SSLContext.getInstance("TLSv1");
         sslcontext.init(null, null, null);
-        SSLSocketFactory NoSSLv3Factory = new NoSSLv3SocketFactory(sslcontext.getSocketFactory());
-        HttpsURLConnection.setDefaultSSLSocketFactory(NoSSLv3Factory);
+        //SSLSocketFactory NoSSLv3Factory = new NoSSLv3SocketFactory(sslcontext.getSocketFactory());
+        //HttpsURLConnection.setDefaultSSLSocketFactory(NoSSLv3Factory);
         //l_connection = (HttpsURLConnection) l_url.openConnection();
         //l_connection.connect();
-        //final URLConnection urlConnection = connectionURL.openConnection();
-        final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
+        final URLConnection urlConnection = connectionURL.openConnection();
+        //final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
         Log.d("Printing UrlConnection =" , urlConnection.toString());
         urlConnection.setConnectTimeout(CONNECTION_TIMEOUT);
         urlConnection.setReadTimeout(READ_TIMEOUT);
