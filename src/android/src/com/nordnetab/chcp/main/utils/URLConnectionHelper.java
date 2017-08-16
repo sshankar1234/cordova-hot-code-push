@@ -5,7 +5,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Map;
 import android.util.Log;
-import com.nordnetab.chcp.main.utils.NoSSLv3SocketFactory;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
