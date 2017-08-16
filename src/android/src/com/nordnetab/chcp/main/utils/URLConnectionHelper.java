@@ -41,7 +41,7 @@ public class URLConnectionHelper {
         sslcontext.init(null, null, null);
         SSLSocketFactory NoSSLv3Factory = new com.nordnetab.chcp.main.utils.NoSSLv3SocketFactory(sslcontext.getSocketFactory());
         HttpsURLConnection.setDefaultSSLSocketFactory(NoSSLv3Factory);
-        l_connection = (HttpsURLConnection) l_url.openConnection();
+        //l_connection = (HttpsURLConnection) l_url.openConnection();
         //l_connection.connect();
         //final URLConnection urlConnection = connectionURL.openConnection();
         final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
