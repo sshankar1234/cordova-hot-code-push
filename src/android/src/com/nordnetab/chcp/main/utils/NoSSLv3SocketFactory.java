@@ -128,6 +128,7 @@ public class DelegateSSLSocket extends SSLSocket {
 
     @Override
     public void setEnabledCipherSuites(String[] suites) {
+        System.out.println("-------Printing enabled cipher Suites = " + String.valueOf(suites));
         delegate.setEnabledCipherSuites(suites);
     }
 
