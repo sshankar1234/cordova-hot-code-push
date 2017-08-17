@@ -90,7 +90,8 @@ private class NoSSLv3SSLSocket extends DelegateSSLSocket {
 
     @Override
     public void setEnabledProtocols(String[] protocols) {
-        if (protocols != null && protocols.length == 1 && "SSLv3".equals(protocols[0])) {
+        //commented code as it seems to be impacting the platform as a whole
+      /*  if (protocols != null && protocols.length == 1 && "SSLv3".equals(protocols[0])) {
 
             List<String> enabledProtocols = new ArrayList<String>(Arrays.asList(delegate.getEnabledProtocols()));
             if (enabledProtocols.size() > 1) {
@@ -101,7 +102,7 @@ private class NoSSLv3SSLSocket extends DelegateSSLSocket {
             }
             protocols = enabledProtocols.toArray(new String[enabledProtocols.size()]);
         }
-
+      */
         super.setEnabledProtocols(protocols);
     }
 }
