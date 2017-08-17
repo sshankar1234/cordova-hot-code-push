@@ -93,8 +93,8 @@ private class NoSSLv3SSLSocket extends DelegateSSLSocket {
         //commented code as it seems to be impacting the platform as a whole
         System.out.println("----------Printing number of enabled protocols = " + protocols != null ? protocols.length : null);
         if (protocols != null && protocols.length == 1 && "SSLv3".equals(protocols[0])) {
-            System.out.println("--------Reached here 1");
             List<String> enabledProtocols = new ArrayList<String>(Arrays.asList(delegate.getEnabledProtocols()));
+            System.out.println("--------Reached here  = "+ String.valueOf(enabledProtocols));
             if (enabledProtocols.size() > 1) {
                 enabledProtocols.remove("SSLv3");
                 System.out.println("---------Removed SSLv3 from enabled protocols = " + String.valueOf(enabledProtocols));
