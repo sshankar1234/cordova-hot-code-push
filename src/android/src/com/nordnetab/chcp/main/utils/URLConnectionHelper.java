@@ -36,6 +36,7 @@ public class URLConnectionHelper {
         if (connectionURL == null) {
             throw new IOException("Invalid url format: " + url);
         }
+        final HttpsURLConnection urlConnection = null;
         try {
             //Custom Code added to support kitkat https calls
             SSLContext sslcontext = SSLContext.getInstance("TLSv1");
@@ -45,7 +46,7 @@ public class URLConnectionHelper {
                 //l_connection = (HttpsURLConnection) l_url.openConnection();
             //l_connection.connect();
             //final URLConnection urlConnection = connectionURL.openConnection();
-            final HttpsURLConnection urlConnection = (HttpsURLConnection)connectionURL.openConnection();
+            urlConnection = (HttpsURLConnection)connectionURL.openConnection();
             Log.d("Printing UrlConnection =" , urlConnection.toString());
         }catch(Exception e){
             e.printStackTrace();
