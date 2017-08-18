@@ -39,7 +39,7 @@ public class URLConnectionHelper {
         HttpsURLConnection urlConnection = null;
         try {
             //Custom Code added to support kitkat https calls
-            SSLContext sslcontext = SSLContext.getInstance("TLSv1.2");
+            SSLContext sslcontext = SSLContext.getInstance("TLSv1");
             System.out.println("--------sslcontext = "+ sslcontext);
             sslcontext.init(null, null, null);
             //Not disabling SSLV3 to reduce impact
