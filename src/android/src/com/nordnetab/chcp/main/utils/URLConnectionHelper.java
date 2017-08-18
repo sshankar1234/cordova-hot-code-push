@@ -9,6 +9,9 @@ import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLEngine;
+
+import com.google.android.gms.security.ProviderInstaller;
 
 /**
  * Created by Nikolay Demyankov on 03.06.16.
@@ -39,7 +42,7 @@ public class URLConnectionHelper {
         HttpsURLConnection urlConnection = null;
         try {
             //Custom Code added to support kitkat https calls
-            SSLContext sslcontext = SSLContext.getInstance("TLSv1");
+            /*SSLContext sslcontext = SSLContext.getInstance("TLSv1");
             System.out.println("--------sslcontext = "+ sslcontext);
             sslcontext.init(null, null, null);
             //Not disabling SSLV3 to reduce impact
@@ -48,6 +51,12 @@ public class URLConnectionHelper {
                 //l_connection = (HttpsURLConnection) l_url.openConnection();
             //l_connection.connect();
             //final URLConnection urlConnection = connectionURL.openConnection();
+            */
+            ProviderInstaller.installIfNeeded(getApplicationContext());
+            SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
+            sslContext.init(null, null, null);
+            SSLEngine engine = sslContext.createSSLEngine();
+            urlConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());
             urlConnection = (HttpsURLConnection)connectionURL.openConnection();
             Log.d("Printing UrlConnection =" , urlConnection.toString());
         }catch(Exception e){
